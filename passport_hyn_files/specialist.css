@@ -1,0 +1,40 @@
+.weui-cells:before{display: none;}
+.prompt-checkbox.weui-cells{margin-bottom: 1.17647059em;}
+.prompt-checkbox.weui-cells:before,.prompt-checkbox .weui-cell:before{border-top:none}
+.prompt-checkbox.weui-cells:after{border-bottom:none}
+.prompt-checkbox .weui-cell__bd p{color: #333; text-align: left;}
+.prompt-checkbox .weui-check__label{margin-left: 30px;}
+
+.tableRenwu{ padding:0px 10px; }
+.tableRenwu h5{display: block; width: 100%; font-weight: normal;text-align: left;font-size: 15px; color: #9d9faa;}
+.renwu-flex{display: flex; align-items: center; flex-direction: row; justify-content: space-between; margin-top: 5px; padding-bottom: 10px; }
+.line-bottom{padding-top: 10px; position: relative;}
+.line-bottom:after{height:1px; background-color: #e5e5e5; content: '';position: absolute;left: 0;bottom: 0;right: 0;transform: scaleY(0.5); -webkit-transform: scaleY(0.5);}
+.line-bottom:last-child:after{display: none;}
+.renwu-flex p{color: #999; font-size: 13px;}
+.weui-loadmore{margin: 5px auto; color: #666;}
+
+.c-gray{ color: #B3B3B3;}
+
+.operation-box1 a{
+	border-radius: 8px;
+	margin: 0 4px;
+}
+.btn-main{
+	/* padding: 0px; */
+}
+
+.box-rad:before , .box-rad:after{
+	border-top: 0px;
+	border-bottom: 0px;
+}
+
+
+.pull-left{font-size: 14px;}
+.pull-right{font-size: 14px;}
+.weui-cells__title{margin-bottom: .6em;}
+
+.weui-form-preview__item .weui-form-preview__label, .weui-form-preview__item .weui-form-preview__value{
+	font-size: 15px;
+	color: #9d9faa;
+}

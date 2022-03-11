@@ -1,0 +1,37 @@
+ul,li{margin: 0px;padding: 0;}
+body{background-color: #F3F3F3;}
+.pull-left{float: left;}
+.pull-right{float: right;}
+.clearfix{clear: both;}
+
+.box-content{padding:0 10px}
+
+.m-t-5{margin-top: 5px;}
+.m-t-10{margin-top: 10px;}
+.m-b-5{margin-bottom: 5px;}
+.m-b-10{margin-bottom: 10px;}
+.m-r-10{margin-right: 10px;}
+
+.text-center{text-align: center;}
+.text-right{text-align: right;}
+
+.bg-white{background:#fff}
+
+
+.font14{font-size: 14px;}
+.font16{font-size: 16px;}
+.font18{font-size: 18px;}
+
+.weui-icon-success{color: #0e85dd;}
+
+.container-box{padding: 0px 25px 0px; overflow: hidden;}
+
+/*button 主色*/
+
+.btn-mainbg {
+	border: none;
+	background:#5da3df;
+	color: #fff;
+}
+
+.safe-operation-box{margin-top: 40px; margin-bottom: 40px;}

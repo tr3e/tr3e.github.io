@@ -1,0 +1,23 @@
+/*padding: 20px 25px 0px;*/
+.weui-navbar
+{
+	background-color: rgba(0,0,0,0);
+}
+.weui-navbar:after{
+	border-bottom: 0px;
+}
+.weui-navbar a{
+	background-color: #363940;
+	/*border-radius: 4px;*/
+	color: #2f99e9;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+	line-height: 30px;
+	height: 28px;
+}
+.page-tab .weui-navbar__item.weui-bar__item--on{
+	background-color: #2f99e9;
+	color: #fff;
+	border-bottom: 0px;
+}.page-tab .weui-navbar__item:first-child{border-top-left-radius: 5px; border-bottom-left-radius: 5px;}
+.page-tab .weui-navbar__item:last-child{border-top-right-radius: 5px; border-bottom-right-radius: 5px;}
+

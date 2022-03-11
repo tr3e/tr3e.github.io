@@ -1,0 +1,66 @@
+@import "../../iconfont/css/iconfont.css";
+
+
+.survey-list .weui-media-box__desc{margin-bottom: 5px;color: #666;}
+.survey-list .listFlex{display: flex; align-items:center;justify-content:space-between;}
+.survey-list h4{flex: 1;}
+.survey-list .status .red{color: #DA4F49;font-size: 13px;}
+.survey-list .status .green{color: #00B22D;font-size: 13px;}
+.survey-list .status .blue{color: #4D8FFF;font-size: 13px;}
+.survey-list .status .orange{color: #FF671E;font-size: 13px;}
+.survey-list .status .gary{color: #AFCE5B;font-size: 13px;}
+.survey-list .status .roseo{color:#DC2F68;font-size: 13px;}
+.survey-list .weui-media-box__title{font-size:15px; color:#9d9faa;}
+.survey-list:after{display:none;}
+
+.questionnaire_detail_content{background-color:#363940;box-shadow: 0 0px 5px rgba(0,0,0,0.01);}
+.questionnaire_detail_content.weui-panel:after,.questionnaire_detail_content.weui-panel:before{display:none;}
+.questionnaire_detail_content .weui-media-box__title{white-space:inherit;font-size: 18px;font-weight: 900;}
+.questionnaire_detail_content .weui-media-box__title:before{background: url(../../images/radus_bg_orange.png) no-repeat; position: absolute; content: ''; left: 0;height: 23px;width: 20px; background-size:contain; top: 13px;}
+.questionnaire_detail_content p{color: #9d9faa;font-size: 13px; margin-top:5px;}
+.questionnaire_detail_content .quest-article{margin-top: 5px;}
+.questionnaire_detail_content .quest-article p{color: #9d9faa;font-size: 16px;}
+
+.teams-padding{padding-top: 10px;margin-bottom: 10px;}
+.teams-padding .weui-media-box__title{padding: 10px;font-size: 16px;}
+.weui-cells_checkbox .weui-icon-checked:before{font-size: 20px;}
+.teams-padding .weui-cell__bd p{font-size: 15px;}
+.teams-padding .weui-cells{margin-top: 0; background-color:transparent;}
+/*.teams-padding .textarea-padding{padding: 0 10px 10px;font-size: 14px;}*/
+/*.teams-padding .textarea-padding textarea{background: #F8F8F8;border-radius: 5px;
+padding: 5px;}*/
+
+.other-active{position: relative;}
+.other-input{/*float: left;*/width: 200px;background:#F8F8F8;padding: 3px;border-radius: 5px; }
+
+.weui-cells_checkbox.checkbox-icon [class^="weui-icon-"]{font-family:  "iconfont";}
+.weui-cells_checkbox.checkbox-icon .weui-icon-checked:before{content: '\e61e';color: #C9C9C9;font-size: 23px;display: block;}
+.weui-cells_checkbox.checkbox-icon .weui-check:checked + .weui-icon-checked:before{content: '\e61f'; color: #4C84C4;}
+
+.weui-cells_checkbox .weui-check:disabled + .weui-icon-checked:before,.weui-cells_checkbox.checkbox-icon .weui-check:disabled + .weui-icon-checked:before{color:#ccc}
+
+.switch-size .weui-switch:before,.switch-size .weui-switch-cp__box:before,.switch-size .weui-switch{width: 45px; height: 25px;}
+.switch-size .weui-switch:after,.switch-size .weui-switch-cp__box:after{width: 24px; height: 24px; }
+
+/* @font-face {
+	font-family: "iconfont";
+  	src:url('../../iconfont/fonts/iconfont.ttf') format('truetype')
+}*/
+
+.weui-panel_access{
+		border-radius: 10px;
+		background-color:#363940;
+		box-shadow: 0 0px 5px rgba(0,0,0,0.01);
+}
+.teams-padding-boxsha{
+				background-color:#363940;
+				padding: 10px;
+				border-radius: 10px;
+				box-shadow: 0 0px 5px rgba(0,0,0,0.01);
+				margin-top:15px;
+				color: #9D9FAA;
+			}
+.operation-box1{margin-top: 30px;}
+
+			
+.weui-cell{padding: 10px;}
