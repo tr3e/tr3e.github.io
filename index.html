@@ -50,6 +50,8 @@
       --border-2: #d3dbe6;
       --accent: #2563eb;
       --accent-ink: #1d4ed8;
+      --title-from: #0f172a;
+      --title-to: #2563eb;
       --accent-soft: rgba(37, 99, 235, .08);
       --highlight: #c2410c;
       --highlight-soft: rgba(234, 88, 12, .1);
@@ -81,6 +83,8 @@
       --border-2: #2b384c;
       --accent: #7aa8ff;
       --accent-ink: #a3c2ff;
+      --title-from: #7aa8ff;
+      --title-to: #7c3aed;
       --accent-soft: rgba(122, 168, 255, .12);
       --highlight: #fdba74;
       --highlight-soft: rgba(251, 146, 60, .14);
@@ -482,7 +486,7 @@
          highlighted fragments share one continuous ramp; fit-content maps that
          ramp onto the text itself, so colours don't drift with viewport width. */
       width: fit-content;
-      background-image: linear-gradient(105deg, var(--accent), #7c3aed);
+      background-image: linear-gradient(105deg, var(--title-from), var(--title-to));
       -webkit-background-clip: text;
       background-clip: text;
     }
@@ -1181,7 +1185,7 @@
             <h3 id="news-title">Latest news</h3>
             <ul class="news" id="news">
               <li><time datetime="2026-07">2026.07</time>
-                <div>One paper is accepted by SIGGRAPH 2026.</div>
+                <div>One paper is accepted by SIGGRAPH Asia 2026.</div>
               </li>
               <li><time datetime="2026-06">2026.06</time>
                 <div>One paper is accepted by IROS 2026.</div>
