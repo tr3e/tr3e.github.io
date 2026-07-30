@@ -53,9 +53,6 @@
       --accent-soft: rgba(37, 99, 235, .08);
       --highlight: #c2410c;
       --highlight-soft: rgba(234, 88, 12, .1);
-      --grad-1: #2563eb;
-      --grad-2: #7c3aed;
-      --grad-3: #c026d3;
       --rail: #0c1320;
       --rail-2: #141f33;
       --rail-text: #f2f6fc;
@@ -87,9 +84,6 @@
       --accent-soft: rgba(122, 168, 255, .12);
       --highlight: #fdba74;
       --highlight-soft: rgba(251, 146, 60, .14);
-      --grad-1: #7aa8ff;
-      --grad-2: #c08cff;
-      --grad-3: #e0aaff;
       --rail: #05080d;
       --rail-2: #0d1523;
       --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
@@ -484,12 +478,11 @@
       line-height: 1.04;
       letter-spacing: -.05em;
       text-wrap: balance;
-      /* Gradient lives on the heading so both <em> fragments share one
-         continuous ramp instead of restarting it per fragment. fit-content
-         keeps the ramp mapped to the text itself, not the container, so the
-         end colour does not drift with viewport width. */
+      /* Gradient sits on the heading rather than on <em> so that several
+         highlighted fragments share one continuous ramp; fit-content maps that
+         ramp onto the text itself, so colours don't drift with viewport width. */
       width: fit-content;
-      background-image: linear-gradient(96deg, var(--grad-1), var(--grad-2) 54%, var(--grad-3));
+      background-image: linear-gradient(105deg, var(--accent), #7c3aed);
       -webkit-background-clip: text;
       background-clip: text;
     }
@@ -1148,7 +1141,7 @@
     <section class="section hero" id="about">
       <div>
         <span class="status"><i></i>Open to collaboration &amp; discussion</span>
-        <h1><em>I create therefore I am</em></h1>
+        <h1><em>先为力胜</em></h1>
 
         <p class="lede">
           I am a research scientist at <a href="https://seed.bytedance.com/en/" rel="noopener">ByteDance Seed</a>.
