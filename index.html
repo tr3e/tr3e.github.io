@@ -1,20 +1,13 @@
 <!DOCTYPE html>
-<html lang="cx">
+<html lang="en">
 
 <head>
-  <title>Dr. Han Liang's Homepage</title>
+  <title>Han Liang | Research Scientist</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8" />
-  <meta name="keywords" content="" />
-  <script>
-    addEventListener("load", function () {
-      setTimeout(hideURLbar, 0);
-    }, false);
-
-    function hideURLbar() {
-      window.scrollTo(0, 1);
-    }
-  </script>
+  <meta name="description" content="Han Liang is a research scientist at ByteDance Seed working on video generation, world models, and embodied AI.">
+  <meta name="keywords" content="Han Liang, 梁瀚, video generation, embodied AI, world model, computer vision, computer graphics">
+  <meta name="theme-color" content="#0b1220">
   <!-- Custom Theme files -->
   <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
   <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
@@ -23,118 +16,542 @@
   <!-- //Custom Theme files -->
   <!-- online-fonts -->
   <link rel="icon" href="./images/ShanghaiTech.png">
-  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
   <!-- //online-fonts -->
   <style>
-	#news-box {
-	height: 75px;
-	overflow: hidden;
-}
-#news-box-more{
-	font-size: 14px;
-}
+    :root {
+      --ink: #142033;
+      --muted: #657286;
+      --line: #e5eaf1;
+      --paper: #ffffff;
+      --canvas: #f5f7fa;
+      --navy: #0b1220;
+      --navy-soft: #111c30;
+      --accent: #2563eb;
+      --accent-soft: #eaf1ff;
+      --cyan: #5eead4;
+      --radius: 18px;
+      --shadow: 0 16px 42px rgba(15, 23, 42, .08);
+      --sidebar: 330px;
+    }
 
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 28px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: "DM Sans", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0 0 0 var(--sidebar);
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 92% 4%, rgba(37, 99, 235, .08), transparent 24rem),
+        linear-gradient(rgba(255,255,255,.45) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.45) 1px, transparent 1px);
+      background-size: auto, 32px 32px, 32px 32px;
+    }
+    a { color: var(--accent); text-decoration: none; transition: color .2s ease, opacity .2s ease; }
+    a:hover { color: #1d4ed8; }
+    :focus-visible { outline: 3px solid rgba(37, 99, 235, .3); outline-offset: 3px; border-radius: 6px; }
+    p { color: var(--muted); letter-spacing: 0; line-height: 1.75; }
+
+    .sidenav {
+      position: fixed;
+      inset: 0 auto 0 0;
+      z-index: 20;
+      width: var(--sidebar);
+      height: 100vh;
+      padding: 42px 36px 30px;
+      overflow-y: auto;
+      color: #fff;
+      background:
+        radial-gradient(circle at 25% 10%, rgba(94, 234, 212, .16), transparent 18rem),
+        linear-gradient(155deg, var(--navy-soft), var(--navy) 64%);
+    }
+    .sidenav::after {
+      content: "";
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      width: 90px;
+      height: 90px;
+      opacity: .25;
+      border-right: 1px solid var(--cyan);
+      border-bottom: 1px solid var(--cyan);
+      border-radius: 0 0 28px;
+      pointer-events: none;
+    }
+    .side_top { padding: 0; text-align: left; }
+    .navimg {
+      display: block;
+      width: 116px !important;
+      height: 116px;
+      margin: 0 0 24px;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,.78);
+      border-radius: 30px;
+      box-shadow: 0 18px 32px rgba(0,0,0,.28);
+    }
+    .sidenav h1 {
+      margin: 0;
+      color: #fff;
+      font: 700 1.45rem/1.35 "Manrope", sans-serif;
+    }
+    .sidebar-role {
+      display: block;
+      margin: 8px 0 22px;
+      color: #aab7cb;
+      font-size: .88rem;
+      line-height: 1.55;
+    }
+    .profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 30px;
+    }
+    .profile-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 7px 11px;
+      color: #dce7f5;
+      font-size: .78rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 9px;
+      background: rgba(255,255,255,.06);
+    }
+    .profile-links a:hover { color: #fff; border-color: rgba(94,234,212,.55); background: rgba(94,234,212,.1); }
+    header { padding: 0; }
+    nav.mnu { text-align: left; }
+    nav.mnu .menu { display: grid; gap: 4px; }
+    nav.mnu .menu li { margin: 0 !important; }
+    nav.mnu .menu a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      color: #96a5bb;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      border-radius: 10px;
+      text-transform: uppercase;
+    }
+    nav.mnu .menu a::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      transition: .2s ease;
+    }
+    nav.mnu .menu a:hover,
+    nav.mnu .menu a.active { color: #fff; background: rgba(255,255,255,.07); }
+    nav.mnu .menu a.active::before { border-color: var(--cyan); background: var(--cyan); box-shadow: 0 0 0 4px rgba(94,234,212,.1); }
+    .sidebar-note {
+      margin-top: 34px;
+      color: #6f8099;
+      font-size: .72rem;
+    }
+
+    .main { margin-left: var(--sidebar); }
+    .banner-text-w3ls,
+    .publication,
+    .wedo {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 72px clamp(30px, 6vw, 86px);
+      background: transparent;
+      border: 0;
+    }
+    .banner-text-w3ls { min-height: 100vh; display: flex; align-items: center; }
+    .hero { width: 100%; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--accent); }
+    .hero h1 {
+      max-width: 820px;
+      margin: 0 0 18px;
+      color: var(--ink);
+      font: 800 clamp(2.8rem, 6vw, 5.4rem)/.98 "Manrope", sans-serif;
+      letter-spacing: -.06em;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-lead {
+      max-width: 800px;
+      margin: 0;
+      color: #42516a;
+      font-size: clamp(1.08rem, 1.7vw, 1.3rem);
+      line-height: 1.75;
+    }
+    .hero-lead strong { color: var(--ink); }
+    .interest-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 28px 0 32px;
+      padding: 0;
+      list-style: none;
+    }
+    .interest-list li {
+      padding: 9px 14px;
+      color: #33415a;
+      font-size: .86rem;
+      font-weight: 600;
+      border: 1px solid #dce4ef;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      color: #fff;
+      font-size: .88rem;
+      font-weight: 700;
+      border: 1px solid var(--accent);
+      border-radius: 11px;
+      background: var(--accent);
+      box-shadow: 0 8px 20px rgba(37,99,235,.18);
+    }
+    .button:hover { color: #fff; background: #1d4ed8; transform: translateY(-1px); }
+    .button.secondary { color: var(--ink); border-color: #dbe2ec; background: rgba(255,255,255,.84); box-shadow: none; }
+    .button.secondary:hover { color: var(--accent); border-color: #b9c9e7; }
+    .info-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(270px, .65fr);
+      gap: 18px;
+      margin-top: 60px;
+    }
+    .info-card {
+      padding: 24px 26px;
+      border: 1px solid rgba(219,226,236,.88);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 10px 32px rgba(15,23,42,.045);
+      backdrop-filter: blur(14px);
+    }
+    .info-card h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 16px;
+      color: var(--ink);
+      font: 700 1rem/1.2 "Manrope", sans-serif;
+    }
+    .info-card h2::before { content: ""; width: 8px; height: 8px; border-radius: 3px; background: var(--accent); }
+    #news-list { max-height: 112px; overflow: hidden; transition: max-height .45s ease; }
+    #news-list.expanded { max-height: 520px; }
+    .news-list, .service-list { margin: 0; padding: 0; list-style: none; }
+    .news-list li {
+      position: relative;
+      padding: 8px 0 8px 86px;
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.55;
+      border-bottom: 1px solid #edf0f5;
+    }
+    .news-list li:last-child { border: 0; }
+    .news-list time { position: absolute; left: 0; color: #8a96a8; font: 600 .75rem/1.65 "DM Sans", sans-serif; }
+    .service-list li { padding: 7px 0; color: var(--muted); font-size: .88rem; line-height: 1.6; }
+    #news-box-more {
+      display: inline-flex;
+      margin-top: 13px;
+      padding: 0;
+      color: var(--accent);
+      font-size: .75rem !important;
+      font-weight: 800;
+      letter-spacing: .08em;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .publication { padding-top: 42px; }
+    .publication::before,
+    #experience::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin-bottom: 64px;
+      background: linear-gradient(90deg, var(--line), transparent);
+    }
+    h3.w3_head {
+      margin: 0 0 34px !important;
+      color: var(--ink);
+      font: 800 clamp(1.8rem, 3vw, 2.5rem)/1.15 "Manrope", sans-serif;
+      letter-spacing: -.04em;
+    }
+    h3.w3_head::after {
+      content: "A selection of recent work";
+      display: block;
+      margin-top: 10px;
+      color: #8a95a5;
+      font: 500 .86rem/1.5 "DM Sans", sans-serif;
+      letter-spacing: 0;
+    }
+    .author-legend {
+      margin: -22px 0 28px;
+      color: #8a95a5;
+      font-size: .78rem;
+    }
+    .author-legend sup {
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .publication .container-fluid,
+    .publication .col-lg-12,
+    .wedo .col-xl-12 { padding: 0; }
+    .paper-box {
+      display: grid;
+      grid-template-columns: minmax(220px, 28%) 1fr;
+      gap: 28px;
+      margin: 0 0 18px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 5px 18px rgba(15,23,42,.035);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .paper-box:hover { transform: translateY(-3px); border-color: #cbd8ec; box-shadow: var(--shadow); }
+    .paper_img { width: auto; max-width: none; padding: 0; overflow: hidden; border-radius: 12px; background: #e9edf3; aspect-ratio: 16 / 10; }
+    .paper_img video, .paper_img img {
+      display: block;
+      width: 100% !important;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      box-shadow: none;
+      transition: transform .45s ease;
+    }
+    .paper-box:hover .paper_img video { transform: scale(1.025); }
+    .paper-content { display: flex; flex-direction: column; justify-content: center; max-width: none; padding: 4px 0; }
+    .paper-content h4 { margin: 0 0 10px; color: var(--ink); font: 700 1.08rem/1.45 "Manrope", sans-serif; }
+    .paper-content p { margin: 2px 0; color: var(--muted); font-size: .88rem; line-height: 1.6; }
+    .paper-content p:last-child { margin-top: 10px; font-size: .78rem; font-weight: 700; }
+    .paper-content p:last-child a {
+      display: inline-block;
+      margin: 0 3px 4px;
+      padding: 5px 9px;
+      border-radius: 7px;
+      background: var(--accent-soft);
+    }
+
+    #experience { padding-top: 42px; }
+    #experience h3.w3_head::after { content: "Academic background"; }
+    #experience .experience h3.w3_head::after { content: "Research appointments"; }
+    #experience .experience { margin-top: 70px; }
+    .service_w3top { margin: 0 !important; }
+    .experience-box {
+      position: relative;
+      align-items: flex-start;
+      margin: 0 0 14px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--paper);
+    }
+    .experience-box .icon {
+      display: grid;
+      flex: 0 0 76px;
+      width: 76px;
+      height: 76px;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid #e6eaf0;
+      border-radius: 15px;
+      background: #fff;
+    }
+    .experience-box .icon img { width: 58px !important; height: 58px; object-fit: contain; }
+    .service-content { margin-left: 20px; }
+    .service-content h4 { margin: 0 0 3px; color: var(--ink); font: 700 1rem/1.5 "Manrope", sans-serif; }
+    .service-content h4 + h4 { color: var(--accent); font-size: .82rem; font-weight: 700; }
+    .service-content p { margin-top: 7px; font-size: .88rem; line-height: 1.65; }
+
+    #skill { padding-top: 20px; padding-bottom: 44px; }
+    #skill > div {
+      padding: 26px;
+      text-align: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+    #skill .w3_head { width: auto !important; height: auto !important; margin: 0 !important; }
+    #skill .w3_head::after { display: none; }
+    .site-footer {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 clamp(30px, 6vw, 86px) 46px;
+      color: #8a95a5;
+      font-size: .76rem;
+    }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 980px) {
+      :root { --sidebar: 270px; }
+      .sidenav { padding: 34px 26px; }
+      .navimg { width: 94px !important; height: 94px; border-radius: 25px; }
+      .banner-text-w3ls, .publication, .wedo { padding-left: 40px; padding-right: 40px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .paper-box { grid-template-columns: minmax(180px, 32%) 1fr; gap: 20px; }
+    }
+    @media (max-width: 740px) {
+      :root { --sidebar: 0px; }
+      body::before { inset: 0; }
+      .sidenav {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        padding: 26px 22px 18px;
+        overflow: visible;
+      }
+      .side_top { display: grid; grid-template-columns: 72px 1fr; gap: 0 16px; align-items: center; }
+      .navimg { grid-row: 1 / 4; width: 72px !important; height: 72px; margin: 0; border-radius: 20px; }
+      .sidenav h1 { font-size: 1.1rem; }
+      .sidebar-role { margin: 3px 0 8px; font-size: .75rem; }
+      .profile-links { grid-column: 1 / -1; margin: 17px 0 12px; }
+      .sidebar-note { display: none; }
+      header { overflow-x: auto; }
+      nav.mnu .menu { display: flex !important; width: max-content; }
+      nav.mnu .menu a { padding: 9px 11px; font-size: .69rem; }
+      .toggle, #drop { display: none !important; }
+      .main { margin-left: 0; }
+      .banner-text-w3ls { min-height: 0; padding-top: 64px; padding-bottom: 60px; }
+      .hero h1 { font-size: clamp(2.55rem, 13vw, 4rem); }
+      .info-grid { margin-top: 44px; }
+      .paper-box { grid-template-columns: 1fr; padding: 13px; }
+      .paper_img { aspect-ratio: 16 / 9; }
+      .paper-content { padding: 7px 3px 5px; }
+    }
+    @media (max-width: 480px) {
+      .banner-text-w3ls, .publication, .wedo { padding-left: 20px; padding-right: 20px; }
+      .info-card { padding: 20px; }
+      .news-list li { padding-left: 0; padding-top: 29px; }
+      .news-list time { top: 8px; }
+      .experience-box { padding: 17px; }
+      .experience-box .icon { flex-basis: 56px; width: 56px; height: 56px; border-radius: 12px; }
+      .experience-box .icon img { width: 42px !important; height: 42px; }
+      .service-content { margin-left: 14px; }
+      .site-footer { padding-left: 20px; padding-right: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 
 <body>
-  <div class="sidenav">
-    <div class="side_top"> <img src="images/lianghan-manga.jpg" width="65%" alt="news image" class="img-fluid navimg">
-      <h1> Han Liang - 梁瀚 <br>
-        <!--[CV - <a href="files/CV/chenxin_cv_cn_201803.pdf"><font size="4">中文</font></a> / <a href="files/CV/chenxin_cv_en_202007.pdf">English</a>]<br>-->
-        <!--[CV - <font size="4">中文</font>/ <a href="files/CV/chenxin_cv_en_202011.pdf">English</a>]<br>-->
-        [<a href="files/CV/cv_lianghan.pdf">Download CV</a>]<br>
-        [<a href="mailto:lianghan@shanghaitech.edu.cn">Email</a> | <a href="https://github.com/tr3e">GitHub</a> |
-        <a href="https://scholar.google.com/citations?user=V8dsEp8AAAAJ&hl=zh-CN">Scholar</a>]<br>
-        [<a href="https://aideadlin.es/?sub=ML,CV,NLP,RO,SP,DM,CG">Conference Timer</a>]
-      </h1>
+  <aside class="sidenav" aria-label="Profile and navigation">
+    <div class="side_top">
+      <img src="images/lianghan-manga.jpg" width="116" height="116" alt="Portrait illustration of Han Liang" class="navimg">
+      <h1>Han Liang · 梁瀚</h1>
+      <span class="sidebar-role">Research Scientist<br>ByteDance Seed</span>
+      <div class="profile-links" aria-label="Profile links">
+        <a href="files/CV/cv_lianghan.pdf">CV</a>
+        <a href="mailto:lianghan@shanghaitech.edu.cn">Email</a>
+        <a href="https://github.com/tr3e">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=V8dsEp8AAAAJ&amp;hl=en">Scholar</a>
+      </div>
     </div>
-    <!-- header -->
     <header>
-      <div class="container-fluid px-5 ">
-        <nav class="mnu mx-auto">
-          <label for="drop" class="toggle">Menu</label>
-          <input type="checkbox" id="drop">
+      <div>
+        <nav class="mnu" aria-label="Main navigation">
           <ul class="menu">
-            <!--<li><a href="index.html">Home</a></li-->
-            <li class="mt-sm-0"><a href="#about" class="scroll">Bio</a></li>
-            <li class="mt-sm-3"><a href="#publication" class="scroll">Publications</a></li>
-            <li class="mt-sm-3"><a href="#experience" class="scroll">Experience</a></li>
-            <li class="mt-sm-3"><a href="#skill" class="scroll">Skills</a></li>
+            <li><a href="#about" class="scroll active">About</a></li>
+            <li><a href="#publication" class="scroll">Publications</a></li>
+            <li><a href="#experience" class="scroll">Experience</a></li>
+            <li><a href="#skill" class="scroll">Visitors</a></li>
           </ul>
         </nav>
       </div>
     </header>
-  </div>
+    <p class="sidebar-note">Graphics · Vision · Robotics</p>
+  </aside>
   <div class="main" id="about">
     <div class="banner-text-w3ls">
-      <div>
-        <div class="mx-auto text-left">
-          <h1><strong>Han Liang - 梁瀚</strong></h1>
-          
-          <h6>lianghan@shanghaitech.edu.cn</h6><br>
-          <!-- <h4><a href="https://seed.bytedance.com/en/"><b>ByteDance Seed</b></a></h4></h4><br> -->
-          <!-- <h4><a href="https://seed.bytedance.com/en/"><b>ByteDance Seed</b></a></h4><br> -->
-          <!-- <h4><a href="https://www.shanghaitech.edu.cn/eng/"><b>ShanghaiTech University </b></a> - <a
-              href="https://sist.shanghaitech.edu.cn/sist_en/">SIST</a> - <a
-              href="https://vdi.sist.shanghaitech.edu.cn/">VDI</a></h4><br> -->
-          <!-- <h4><a href="https://en.uestc.edu.cn/"><b>University of Electronic Science and Technology of China - 电子科技大学 </b></a></h4> <br> -->
-
-          <h5>I am a research scientist at <a href="https://seed.bytedance.com/en/">ByteDance Seed</a> in Shanghai, China.<br>
-            Prior to that, I received my Ph.D. in computer science at <a
-            href="https://www.youtube.com/@shanghaitechdigitalhuman4076/videos">VRVC Lab</a>, <a
-            href="http://www.shanghaitech.edu.cn/eng/">ShanghaiTech University</a>, advised by <a
-            href="http://www.xu-lan.com/">Prof. Lan Xu</a> and <a
-            href="http://www.yu-jingyi.com/">Prof. Jingyi Yu</a>. 
-            <!-- I got my B.E. in computer software engineering from <a
-            href="https://en.uestc.edu.cn/">UESTC</a>. -->
-            <br><br>
-
-
-            My research focuses on the intersection of graphics, vision and robotics, especially <strong>video generation</strong> and <strong>embodied AI</strong>. <br> 
-            My ultimate aspiration is to realize human-centered super agents that liberate us human beings from tedious and heavy work.<br>
-            <!-- <br>
-            I expect to defend my Ph.D. in 2025, and I'm now working as a research scientist at <a href="https://www.bytedance.com/en/">ByteDance Intelligent Creation Lab</a>.  -->
-            <br>
-            I'm open to any opportunities for cooperation and discussion. 
-            <br>
-            If you are interested, please don't hesitate to <a href="mailto:lianghan@shanghaitech.edu.cn">contact me</a>.
-            <br><br>
-
-            My current research interests include: 
-          </p>
-          <li>World model</li>
-          <li>Video generation</li>
+      <div class="hero">
+        <span class="eyebrow">Research Scientist · Shanghai</span>
+        <h1>Building intelligent systems that <span>understand our world.</span></h1>
+        <p class="hero-lead">
+          I am a research scientist at <a href="https://seed.bytedance.com/en/"><strong>ByteDance Seed</strong></a>.
+          My research sits at the intersection of graphics, vision, and robotics, with a focus on
+          <strong>video generation</strong> and <strong>embodied AI</strong>.
+        </p>
+        <p class="hero-lead" style="margin-top: 14px;">
+          I received my Ph.D. from <a href="http://www.shanghaitech.edu.cn/eng/">ShanghaiTech University</a>,
+          advised by <a href="http://www.xu-lan.com/">Prof. Lan Xu</a> and
+          <a href="http://www.yu-jingyi.com/">Prof. Jingyi Yu</a>. My goal is to build human-centered agents
+          that free people from tedious and physically demanding work.
+        </p>
+        <ul class="interest-list" aria-label="Research interests">
+          <li>World Models</li>
+          <li>Video Generation</li>
           <li>Embodied AI</li>
-          
-          
-          </h5>
-          
-          <br>
-          <font color="#f33"><b>News!</b></font>
-          </p>
-           <div id="news-box">
-            <li>[2026.04]&ensp; <a href="https://arxiv.org/pdf/2604.14148">Seedance 2.0</a> technical report is released.</li>
-            <li>[2026.02]&ensp; <a href="https://seed.bytedance.com/zh/seedance2_0">Seedance 2.0</a> is released.</li>
-            <li>[2026.02]&ensp; <a href="https://binlee26.github.io/InterAgent-Page/">InterAgent</a> is accepted by CVPR 2026.</li>
-            <li>[2025.11]&ensp; <a href="https://omnihuman-lab.github.io/v1_5/">OmniHuman 1.5</a> is accepted by ICLR 2026 (Oral).</li>
-            <li>[2025.02]&ensp; one paper is accepted by AAAI 2025.</li>
-            <li>[2024.04]&ensp; one paper is accepted by SIGGRAPH 2024.</li>
-            <li>[2024.02]&ensp; OMG is accepted by CVPR 2024. See you in Seattle!</li>
-            <li>[2024.01]&ensp; InterGen is accepted by IJCV 2024. </li>
-            <li>[2023.01]&ensp; one paper is accepted by TVCG 2023.</li>
-            <li>[2022.11]&ensp; one paper is accepted by AAAI 2023 (Oral).</li>
-            <li>[2021.03]&ensp; one paper is accepted by CVPR 2021 (Oral).</li>
-		       </div>
-		        <a id="news-box-more" href="javascript:;"style="font-size:16px;"><b>MORE >></b></a>
-            <br><br>
-            <b>Services</b>
-            </p>
-             <div id="news-box">
-              <li>Conference reviewer: ICLR, AAAI, ICCV, CVPR, SIGGRAPH</li>
-              <li>Journal reviewer: IJCV, TOG, TVCG, TMM</li>
-              <!-- <li>Teaching assistance: CS280 Deep Learning, CS283 Robotics</li> -->
-             </div>
+          <li>Digital Humans</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="button" href="mailto:lianghan@shanghaitech.edu.cn">Start a conversation</a>
+          <a class="button secondary" href="files/CV/cv_lianghan.pdf">Download CV</a>
+          <a class="button secondary" href="https://aideadlin.es/?sub=ML,CV,NLP,RO,SP,DM,CG">Conference timer</a>
+        </div>
+
+        <div class="info-grid">
+          <section class="info-card" aria-labelledby="news-heading">
+            <h2 id="news-heading">Latest news</h2>
+            <ul id="news-list" class="news-list">
+              <li><time>2026.07</time>One paper is accepted by SIGGRAPH 2026.</li>
+              <li><time>2026.06</time>One paper is accepted by IROS 2026.</li>
+              <li><time>2026.04</time><a href="https://arxiv.org/pdf/2604.14148">Seedance 2.0</a> technical report is released.</li>
+              <li><time>2026.02</time><a href="https://seed.bytedance.com/zh/seedance2_0">Seedance 2.0</a> is released.</li>
+              <li><time>2026.02</time><a href="https://binlee26.github.io/InterAgent-Page/">InterAgent</a> is accepted by CVPR 2026.</li>
+              <li><time>2025.11</time><a href="https://omnihuman-lab.github.io/v1_5/">OmniHuman 1.5</a> is accepted by ICLR 2026 (Oral).</li>
+              <li><time>2025.02</time>One paper is accepted by AAAI 2025.</li>
+              <li><time>2024.04</time>One paper is accepted by SIGGRAPH 2024.</li>
+              <li><time>2024.02</time>OMG is accepted by CVPR 2024.</li>
+              <li><time>2024.01</time>InterGen is accepted by IJCV 2024.</li>
+              <li><time>2023.01</time>One paper is accepted by TVCG 2023.</li>
+              <li><time>2022.11</time>One paper is accepted by AAAI 2023 (Oral).</li>
+              <li><time>2021.03</time>One paper is accepted by CVPR 2021 (Oral).</li>
+            </ul>
+            <button id="news-box-more" type="button" aria-expanded="false" aria-controls="news-list">Show all news ↓</button>
+          </section>
+          <section class="info-card" aria-labelledby="service-heading">
+            <h2 id="service-heading">Academic service</h2>
+            <ul class="service-list">
+              <li><strong>Conferences</strong><br>ICLR · AAAI · ICCV · CVPR · SIGGRAPH</li>
+              <li><strong>Journals</strong><br>IJCV · TOG · TVCG · TMM</li>
+            </ul>
+          </section>
         </div>
       </div>
     </div>
@@ -144,15 +561,16 @@
     <!-- publications -->
     <section class="publication" id="publication">
       <div class="container-fluid py-lg-1">
-        <h3 class="w3_head mb-5">Selected Publications <font size ="5"></font></h3>
+        <h3 class="w3_head mb-5">Selected Publications</h3>
+        <p class="author-legend"><sup>*</sup> Equal contribution · <sup>+</sup> Corresponding author</p>
         <!-- <h3 class="w3_head mb-5">Selected Publications (<a href="./Publication.html">Complete List…</a>)</h3> -->
         <div class="col-lg-12">
 
           <div class="row paper-box">
             <div class="col-md-3 col-12 paper_img"> 
               <video 
-                src="pubs/seedance2.0/teaser.mp4" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
+                src="pubs/seedance2.0/teaser.mp4"
+                loop muted playsinline aria-label="Seedance 2.0 preview" class="img-fluid"></video>
               </div>
        
             <div class="col-md-9 col-12 paper-content">
@@ -173,8 +591,8 @@
           <div class="row paper-box">
             <div class="col-md-3 col-12 paper_img"> 
               <video 
-                src="pubs/seedance1.5/teaser.mp4" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
+                src="pubs/seedance1.5/teaser.mp4"
+                loop muted playsinline aria-label="Seedance 1.5 Pro preview" class="img-fluid"></video>
               </div>
        
             <div class="col-md-9 col-12 paper-content">
@@ -196,8 +614,8 @@
           <div class="row paper-box">
             <div class="col-md-3 col-12 paper_img"> 
               <video 
-                src="pubs/omnihuman1.5/e-1.mp4" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
+                src="pubs/omnihuman1.5/e-1.mp4"
+                loop muted playsinline aria-label="OmniHuman 1.5 preview" class="img-fluid"></video>
               </div>
        
             <div class="col-md-9 col-12 paper-content">
@@ -218,8 +636,8 @@
           <div class="row paper-box">
             <div class="col-md-3 col-12 paper_img"> 
               <video 
-                src="pubs/phygile/phygile.mp4" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
+                src="pubs/phygile/phygile.mp4"
+                loop muted playsinline aria-label="PhyGile preview" class="img-fluid"></video>
               </div>
        
             <div class="col-md-9 col-12 paper-content">
@@ -228,8 +646,7 @@
               </h4>
               <p>Jiacheng Bao<sup>*</sup>, Haoran Yang<sup>*</sup>, Yucheng Xin<sup>*</sup>, Junhong Liu, Yuecheng Xu, <strong>Han Liang</strong>, Pengfei Han, Xiaoguang Ma, Dong Wang, Bin Zhao<br>
               </p>
-              </p>
-              <p><strong>Arxiv, 2026</strong></p>
+              <p><strong>IROS, 2026</strong></p>
               <p>
                 [<a href="https://baojch.github.io/phygile-page/">Project</a> | 
                 <a href="https://arxiv.org/pdf/2603.19305">Arxiv</a> | 
@@ -243,16 +660,15 @@
           <div class="row paper-box">
             <div class="col-md-3 col-12 paper_img"> 
               <video 
-                src="pubs/interagent/interagent.mp4" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
+                src="pubs/interagent/interagent.mp4"
+                loop muted playsinline aria-label="InterAgent preview" class="img-fluid"></video>
               </div>
        
             <div class="col-md-9 col-12 paper-content">
               <h4>	
                 <strong>InterAgent: Physics-based Multi-agent Command Execution via Diffusion on Interaction Graphs</strong><br>
               </h4>
-              <p>Bin Li<sup>*</sup>, Ruichi Zhang<sup>*</sup>, <strong>Han Liang<sup>†</sup></strong>, Jingyan Zhang, Juze Zhang, Xin Chen, Lan Xu, Jingyi Yu, Jingya Wang<sup>†</sup><br>
-              </p>
+              <p>Bin Li<sup>*</sup>, Ruichi Zhang<sup>*</sup>, <strong>Han Liang<sup>+</sup></strong>, Jingyan Zhang, Juze Zhang, Xin Chen, Lan Xu, Jingyi Yu, Jingya Wang<sup>+</sup><br>
               </p>
               <p><strong>CVPR, 2026</strong></p>
               <p>
@@ -267,8 +683,8 @@
           <div class="row paper-box">
             <div class="col-md-3 col-12 paper_img"> 
               <video 
-                src="pubs/media2face/media2face.mp4" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
+                src="pubs/media2face/media2face.mp4"
+                loop muted playsinline aria-label="Media2Face preview" class="img-fluid"></video>
               </div>
        
             <div class="col-md-9 col-12 paper-content">
@@ -282,8 +698,7 @@
                 [<a href="https://sites.google.com/view/media2face">Project</a> |
                 <a href="https://arxiv.org/pdf/2401.15687.pdf">Paper</a> |
                 <a href="https://arxiv.org/abs/2401.15687">Arxiv</a> |
-                <a href="https://www.youtube.com/watch?v=ugTYqTZSlfg">Video</a> |
-                <a href="">Code</a>]
+                <a href="https://www.youtube.com/watch?v=ugTYqTZSlfg">Video</a>]
               </p>
             </div>
        
@@ -292,8 +707,8 @@
           <div class="row paper-box">
             <div class="col-md-3 col-12 paper_img"> 
               <video 
-                src="pubs/omg/omg-teaser.mp4" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
+                src="pubs/omg/omg-teaser.mp4"
+                loop muted playsinline aria-label="OMG preview" class="img-fluid"></video>
               </div>
        
             <div class="col-md-9 col-12 paper-content">
@@ -307,8 +722,7 @@
                 [<a href="https://tr3e.github.io/omg-page/">Project</a> |
                 <a href="https://arxiv.org/pdf/2312.08985.pdf">Paper</a> |
                 <a href="https://arxiv.org/abs/2312.08985">Arxiv</a> |
-                <a href="https://www.youtube.com/watch?v=1M4c2eZFTk0">Video</a> |
-                <a href="">Code</a>]
+                <a href="https://www.youtube.com/watch?v=1M4c2eZFTk0">Video</a>]
               </p>
             </div>
        
@@ -318,8 +732,8 @@
           <div class="row paper-box">
             <div class="col-md-3 col-12 paper_img"> 
               <video 
-                src="pubs/intergen/intergen.mp4" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
+                src="pubs/intergen/intergen.mp4"
+                loop muted playsinline aria-label="InterGen preview" class="img-fluid"></video>
               </div>
             <!-- .Icon ends here -->
             <div class="col-md-9 col-12 paper-content">
@@ -344,8 +758,8 @@
           <div class="row paper-box">
             <div class="col-md-3 col-12 paper_img"> 
               <video 
-                src="pubs/hybridcap/hybridcap.mp4" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
+                src="pubs/hybridcap/hybridcap.mp4"
+                loop muted playsinline aria-label="HybridCap preview" class="img-fluid"></video>
               </div>
             <!-- .Icon ends here -->
             <div class="col-md-9 col-12 paper-content">
@@ -359,7 +773,7 @@
                 [<a href="https://tr3e.github.io/omg-page/">Project</a> |
                 <a href="https://dl.acm.org/doi/10.1609/aaai.v37i2.25240">Paper</a> |
                 <a href="https://arxiv.org/abs/2203.09287">Arxiv</a> |
-                <a href="https://www.youtube.com/watch?v=fV4IRTUdSws&t=84s">Video</a>]
+                <a href="https://www.youtube.com/watch?v=fV4IRTUdSws&amp;t=84s">Video</a>]
               </p>
             </div>
             <!-- .Service-content ends here -->
@@ -407,6 +821,7 @@
               </p>
             </div>
           </div> -->
+          </div>
       </div>
     </section>
 
@@ -417,7 +832,7 @@
         <div class="row service_w3top mt-5">
           <div class="col-xl-12">
             <div class="d-flex experience-box">
-              <div class="icon"> <img width="100px" src="images/shanghaitech.png" /> </div>
+              <div class="icon"><img width="100" height="100" src="images/shanghaitech.png" alt="ShanghaiTech University logo"></div>
               <!-- .Icon ends here -->
               <div class="service-content">
                 <div class="d-md-flex justify-content-between">
@@ -433,7 +848,7 @@
               <!-- .Service-content ends here -->
             </div>
             <div class="d-flex experience-box">
-              <div class="icon"> <img width="100px" src="images/uestc.png" /> </div>
+              <div class="icon"><img width="100" height="100" src="images/uestc.png" alt="UESTC logo"></div>
               <!-- .Icon ends here -->
               <div class="service-content">
                 <div class="d-md-flex justify-content-between">
@@ -454,7 +869,7 @@
           <div class="col-xl-12">
 
             <div class="d-flex experience-box">
-              <div class="icon"><img width="100px" src="images/bytedance.jpg" /> </div>
+              <div class="icon"><img width="100" height="100" src="images/bytedance.jpg" alt="ByteDance logo"></div>
               <!-- .Icon ends here -->
               <div class="service-content">
                 <div class="d-md-flex justify-content-between">
@@ -469,7 +884,7 @@
             </div>
 
             <div class="d-flex experience-box">
-              <div class="icon"><img width="100px" src="images/ailab.png" /> </div>
+              <div class="icon"><img width="100" height="100" src="images/ailab.png" alt="Tencent AI Lab logo"></div>
               <!-- .Icon ends here -->
               <div class="service-content">
                 <div class="d-md-flex justify-content-between">
@@ -477,7 +892,7 @@
                   <!-- <h4> Aug. 2024 - Dec. 2024</h4> -->
                 </div>
                 <h4> Research scientist intern</h4>
-                <p>I worked as a research scientist intern at <a href="https://ai.tencent.com/ailab/en/index">Tencent AI Lab</a>, working closely with <a href="https://shaoli-huang.github.io/">Dr. Shaoli Huang</a> and <a href="https://scholar.google.com/citations?user=4oXBp9UAAAAJ&hl=en">Dr. Ying Shan</a>.</p>
+                <p>I worked as a research scientist intern at <a href="https://ai.tencent.com/ailab/en/index">Tencent AI Lab</a>, working closely with <a href="https://shaoli-huang.github.io/">Dr. Shaoli Huang</a> and <a href="https://scholar.google.com/citations?user=4oXBp9UAAAAJ&amp;hl=en">Dr. Ying Shan</a>.</p>
                 <br>
               </div>
               <!-- .Service-content ends here -->
@@ -508,7 +923,7 @@
               </div>
             </div> -->
             <div class="d-flex experience-box">
-              <div class="icon"><img width="100px" src="images/ustc.png" /> </div>
+              <div class="icon"><img width="100" height="100" src="images/ustc.png" alt="USTC logo"></div>
               <!-- .Icon ends here -->
               <div class="service-content">
                 <div class="d-md-flex justify-content-between">
@@ -545,43 +960,68 @@
       <div id="id4" style="clear:both"></div>
     </section> -->
 
-    <!-- //skill -->
     <section class="wedo" id="skill">
-      <div>  
-        <h3 class="w3_head mb-1" style="width: 20%;height: 20%;"> <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=dYDDoCUfpjg-uE8Iy35ju5dj3lln3F-zieczPfbDAXQ"></script>  </h3>
-        <!-- <h3 class="w3_head mb-1" style="width: 24%;height: 24%;"> <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=dYDDoCUfpjg-uE8Iy35ju5dj3lln3F-zieczPfbDAXQ'></script>  </h3> -->
-        <!-- <div class="d-md-flex justify-content-between" style="width: 300px;height: 300px;">
-          <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=dYDDoCUfpjg-uE8Iy35ju5dj3lln3F-zieczPfbDAXQ"></script>
-        </div> -->
+      <div>
+        <h3 class="w3_head">Visitors around the world</h3>
+        <p style="margin: 8px 0 22px;">Thank you for stopping by.</p>
+        <script type="text/javascript" id="clstr_globe" src="https://clustrmaps.com/globe.js?d=dYDDoCUfpjg-uE8Iy35ju5dj3lln3F-zieczPfbDAXQ"></script>
       </div>
-      
-
-      <!-- <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.?i=5ix9r8rqpnb&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script> -->
-      <!-- <script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=59qpe4r4c9p&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script> -->
-      
     </section>
-    <!-- //skill -->
+    <footer class="site-footer">
+      © <span id="current-year"></span> Han Liang · Designed for clarity, built for the web.
+    </footer>
   </div>
 
-
-  <!-- <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=dYDDoCUfpjg-uE8Iy35ju5dj3lln3F-zieczPfbDAXQ"></script> -->
-
   <script>
-	var newsBoxMoreBtn = document.getElementById('news-box-more')
-	var newsBox = document.getElementById('news-box');
-	var flag = false;
-	newsBoxMoreBtn.addEventListener('click',function(){
-		flag = !flag;
-		if(flag){
-			newsBox.style.height = 'auto';
-			newsBoxMoreBtn.innerHTML = 'CLOSE <<'
-		}
-		else{
-			newsBox.style.height = '75px';
-			newsBoxMoreBtn.innerHTML = 'MORE >>'
-		}
-		
-	})
+    const newsButton = document.getElementById('news-box-more');
+    const newsList = document.getElementById('news-list');
+
+    newsButton.addEventListener('click', () => {
+      const expanded = newsList.classList.toggle('expanded');
+      newsButton.setAttribute('aria-expanded', String(expanded));
+      newsButton.textContent = expanded ? 'Show less ↑' : 'Show all news ↓';
+    });
+
+    const sections = [...document.querySelectorAll('.main > [id], .main section[id]')];
+    const navLinks = [...document.querySelectorAll('.menu a')];
+    const sectionObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      navLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${visible.target.id}`);
+      });
+    }, { rootMargin: '-20% 0px -65%', threshold: [0, .2, .5] });
+    sections.forEach((section) => sectionObserver.observe(section));
+
+    const revealItems = document.querySelectorAll('.paper-box, .experience-box, .info-card');
+    revealItems.forEach((item) => item.classList.add('reveal'));
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .08 });
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    const videos = document.querySelectorAll('.paper_img video');
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.play().catch(() => {});
+        } else {
+          entry.target.pause();
+        }
+      });
+    }, { rootMargin: '180px 0px' });
+    videos.forEach((video) => {
+      video.preload = 'metadata';
+      videoObserver.observe(video);
+    });
+
+    document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
 </body>
 
