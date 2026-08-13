@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>面试速查 · 梁瀚</title>
+  <style>
+    :root {
+      --bg: #101114;
+      --bg-2: #16181c;
+      --bg-3: #1d2026;
+      --line: #2a2e36;
+      --line-2: #383d47;
+      --fg: #e8e9ec;
+      --fg-2: #a8adb8;
+      --fg-3: #7c828f;
+      --accent: #e0a458;
+      --accent-dim: #6b4f28;
+      --good: #6bbf8a;
+      --warn: #d9694f;
+      --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+        "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 22px; }
+
+    body {
+      margin: 0; background: var(--bg); color: var(--fg);
+      font-family: var(--sans); font-size: 15px; line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { display: flex; align-items: flex-start; max-width: 1180px; margin: 0 auto; }
+
+    nav {
+      position: sticky; top: 0; flex: 0 0 190px; height: 100vh;
+      padding: 26px 12px 40px 20px; border-right: 1px solid var(--line);
+    }
+    nav .brand { font-size: 14px; font-weight: 700; }
+    nav .brand-sub { font-size: 11px; color: var(--fg-3); margin-bottom: 20px; letter-spacing: .05em; }
+    nav a {
+      display: block; color: var(--fg-2); text-decoration: none; font-size: 13px;
+      padding: 5px 10px; border-radius: 5px; border-left: 2px solid transparent;
+    }
+    nav a:hover { color: var(--fg); background: var(--bg-2); }
+    nav a.on { color: var(--accent); border-left-color: var(--accent); background: var(--bg-2); }
+    nav .sep { height: 14px; }
+
+    main { flex: 1 1 auto; min-width: 0; padding: 28px 42px 120px; max-width: 800px; }
+
+    h1 { font-size: 23px; margin: 0 0 22px; }
+    h2 {
+      font-size: 18px; margin: 46px 0 14px; padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 14.5px; margin: 24px 0 8px; }
+    p { margin: 9px 0; }
+    ul, ol { margin: 9px 0; padding-left: 20px; }
+    li { margin: 5px 0; }
+    strong { color: #fff; font-weight: 620; }
+    code {
+      font-family: var(--mono); font-size: .875em; background: var(--bg-3);
+      padding: 1.5px 5px; border-radius: 4px; color: #d7c9a8;
+    }
+
+    .script {
+      background: var(--bg-2); border: 1px solid var(--line);
+      border-left: 3px solid var(--accent); border-radius: 0 7px 7px 0;
+      padding: 16px 20px; margin: 14px 0;
+    }
+    .script p { font-size: 15.5px; line-height: 1.85; margin: 0; }
+    .script p + p { margin-top: 10px; }
+    .script em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+    .box {
+      background: var(--bg-2); border: 1px solid var(--line);
+      border-radius: 7px; padding: 13px 17px; margin: 14px 0;
+    }
+    .box.key { border-color: var(--accent-dim); background: #1a1710; }
+    .box.warn { border-color: #4a2b23; background: #1c1310; }
+    .box .lbl {
+      font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 6px; color: var(--fg-3);
+    }
+    .box.key .lbl { color: var(--accent); }
+    .box.warn .lbl { color: var(--warn); }
+    .box > :last-child { margin-bottom: 0; }
+
+    pre {
+      font-family: var(--mono); font-size: 12.5px; line-height: 1.7;
+      background: #0a0b0d; border: 1px solid var(--line); border-radius: 7px;
+      padding: 13px 16px; overflow-x: auto; margin: 12px 0; color: #cdd3dd;
+    }
+    pre .c { color: #6a7180; }
+    pre .hl { color: var(--accent); }
+
+    table {
+      width: 100%; border-collapse: collapse; margin: 12px 0;
+      font-size: 12.5px; font-variant-numeric: tabular-nums;
+    }
+    th {
+      text-align: left; padding: 7px 9px; border-bottom: 1.5px solid var(--line-2);
+      color: var(--fg-3); font-weight: 600; font-size: 11px;
+      text-transform: uppercase; letter-spacing: .05em; white-space: nowrap;
+    }
+    td { padding: 6px 9px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    td.n { text-align: right; font-family: var(--mono); }
+    .mono { font-family: var(--mono); font-size: 12px; }
+    .dim { color: var(--fg-3); }
+    .up { color: var(--good); }
+    .down { color: var(--warn); }
+
+    details {
+      border: 1px solid var(--line); border-radius: 7px;
+      margin: 7px 0; background: var(--bg-2); overflow: hidden;
+    }
+    summary {
+      cursor: pointer; padding: 10px 15px; font-size: 13.5px;
+      font-weight: 600; color: var(--fg); list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::before {
+      content: "+"; color: var(--accent); font-family: var(--mono);
+      margin-right: 9px; font-weight: 700;
+    }
+    details[open] summary::before { content: "−"; }
+    summary:hover { background: var(--bg-3); }
+    .ans { padding: 0 15px 13px 34px; font-size: 13.5px; color: var(--fg-2); }
+    .ans > :last-child { margin-bottom: 0; }
+    .ans strong { color: var(--fg); }
+
+    .toolbar { position: fixed; right: 18px; bottom: 18px; display: flex; gap: 6px; }
+    .toolbar button {
+      background: var(--bg-3); color: var(--fg-2); border: 1px solid var(--line-2);
+      border-radius: 6px; width: 32px; height: 32px; cursor: pointer; font-size: 12.5px;
+    }
+    .toolbar button:hover { color: var(--accent); }
+
+    @media print {
+      nav, .toolbar { display: none; }
+      body { background: #fff; color: #000; font-size: 10pt; }
+      main { max-width: none; padding: 0; }
+      details { break-inside: avoid; }
+      pre, .box, .script { background: #f6f6f6; border-color: #ccc; color: #000; }
+    }
+
+    @media (max-width: 860px) {
+      nav { display: none; }
+      main { padding: 20px 16px 80px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <nav>
+      <div class="brand">面试速查</div>
+      <div class="brand-sub">梁瀚 · HAN LIANG</div>
+      <a href="#intro">开场自我介绍</a>
+      <a href="#arc">主线与代表作</a>
+      <div class="sep"></div>
+      <a href="#perm">PERM 三个设计</a>
+      <a href="#agg">聚合公式</a>
+      <div class="sep"></div>
+      <a href="#ppo">★ 一：PPO → GRPO</a>
+      <a href="#adv">★ 二：advantage 加权</a>
+      <a href="#qa">深挖追问</a>
+    </nav>
+
+    <main>
+      <h1>面试速查</h1>
+
+      <!-- ============ 开场 ============ -->
+      <h2 id="intro">开场自我介绍</h2>
+
+      <div class="script">
+        <p>面试官您好，我是梁瀚，25 年从<em>上海科技大学</em>博士毕业，导师是许岚和虞晶怡老师，主要做数字人和人体运动生成。
+          <em>现在在字节 Seed 部门工作，目前是在seedance团队做视频生成</em>。我毕业以后主要做了几块工作。</p>
+        <p>第一块是 <em>OmniHuman</em>，我做为核心贡献者，利用精调的omni LLM 进行输入音频图像的理解和长程规划驱动 多模态condition的 seedance 产出语义连贯的分钟级 photo realistic 的数字人视频，达到了当时的SOTA效果，相关技术报告拿了 <em>ICLR Oral</em>。</p>
+        <p>第二块是 <em>Seedance 系列</em>，我作为主要贡献者参与了 1.5、 2.0 到 2.5的整个版本迭代。主要工作围绕视频生成的理解部分，参与了caption和PE以及音视频reward model的完整迭代。</p>
+        <p>目前主要负责seedance PE RL的迭代，参与团队通用视频生成verifier的建设。</p>
+      </div>
+
+      <div class="box key">
+        <div class="lbl">为什么这样排</div>
+        <p>Seed 三块占了约八成篇幅，博士压缩成一句背书。<strong>结尾落在奖励模型上是故意的</strong>——它最能体现技术判断，而且顺势把面试官引向你弹药最足的 PERM 部分。如果时间紧，砍掉第三块的技术细节（保留"多维奖励模型和 RL"这个定位），整段能压到 30 秒内。</p>
+      </div>
+
+      <!-- ============ 主线 ============ -->
+      <h2 id="arc">主线与代表作</h2>
+
+      <div class="box key">
+        <div class="lbl">被问"你的研究主线是什么"</div>
+        <p>"我一直在做同一件事的不同层次：<strong>让机器理解并生成人的行为</strong>。早期是从真实世界把人的运动捕下来，中间是学会生成它，现在是把人放回一个完整生成的世界里。"</p>
+      </div>
+
+      <table>
+        <thead><tr><th>工作</th><th>会议</th><th>一句话</th></tr></thead>
+        <tbody>
+          <tr><td colspan="3" class="dim" style="padding-top:12px"><strong style="color:var(--accent)">Seed 期间</strong> · 2025.03 —</td></tr>
+          <tr><td><strong>Seedance 1.5 Pro / 2.0 / 2.5</strong></td><td>Seed</td><td>1.5 Pro 原生音画联合生成；2.0 推向世界级复杂度</td></tr>
+          <tr><td><strong>OmniHuman-1.5</strong></td><td>ICLR'26 Oral</td><td>多模态 LLM 规划 + DiT 生成，给数字人装"主动的脑子"</td></tr>
+          <tr><td><strong>PERM 奖励模型 + PE RL</strong></td><td class="dim">内部</td><td>按维度性质路由的 rubrics RM，标定后驱动 GRPO<span class="dim">（弹药见下方）</span></td></tr>
+          <tr><td colspan="3" class="dim" style="padding-top:14px"><strong>博士期间与持续合作</strong></td></tr>
+          <tr><td><strong>OMG</strong> <span class="dim">一作</span></td><td>CVPR'24</td><td>大规模无监督预训练 + Mixture-of-Controllers，破动作数据稀缺</td></tr>
+          <tr><td><strong>InterGen</strong> <span class="dim">一作</span></td><td>IJCV'24</td><td>双人交互生成的首个扩散框架 + InterHuman 数据集</td></tr>
+          <tr><td><strong>HybridCap</strong> <span class="dim">一作</span></td><td>AAAI'23 Oral</td><td>惯性辅助单目捕捉高难度动作</td></tr>
+          <tr><td><strong>SCRIPT / InterAgent</strong> <span class="dim">通讯</span></td><td>SIGGRAPH Asia'26 · CVPR'26</td><td>语言驱动的物理人形控制与多智能体交互</td></tr>
+        </tbody>
+      </table>
+
+      <div class="box">
+        <div class="lbl">两道必问题的答法要点</div>
+        <p><strong>为什么从动作生成转视频生成？</strong>讲技术收敛，别讲公司安排——"动作数据比视频小几个数量级，OMG 里我用无监督预训练就是在绕这个瓶颈。视频生成是同一个目标换了一个数据规模更友好的载体，像素空间隐含了运动、物理、交互的全部信息。"</p>
+        <p><strong>你在 Seedance 里具体做了什么？</strong>结构是「先划清边界 → 讲你的技术判断和踩过的坑 → 给可验证结果」。<span class="down">这题内容只有你能填，务必提前想好——现在自我介绍以 Seed 为主，这题被追问的概率更高了。</span></p>
+      </div>
+
+      <!-- ============ PERM ============ -->
+      <h2 id="perm">PERM 三个设计</h2>
+
+      <p class="dim" style="font-size:13px">PERM 是给 <strong>PE 模型的 RL</strong> 提供奖励的多维 rubrics 奖励模型。链路：用户 prompt → PE 改写 → 生成视频 → PERM 多维打分 → 聚合成标量 → GRPO 更新 PE。</p>
+
+      <h3>① 不存在大而全的 rubric，按维度性质路由</h3>
+      <p>通用静态 rubric 的判别力接近随机。所以按<em>性质</em>拆成三种范式：</p>
+      <table>
+        <thead><tr><th>类型</th><th>范式</th><th>为什么必须这样</th></tr></thead>
+        <tbody>
+          <tr><td><strong>推理型</strong><br><span class="dim">指令遵循</span></td><td>长 CoT + 实例级检查清单</td><td>需要"拆解要求 → 逐条核验"的推理链</td></tr>
+          <tr><td><strong>主观感知</strong><br><span class="dim">运动 / 美感</span></td><td>no-think + score-token 软分</td><td>拆不出客观条件，而且<strong>长 CoT 会让打分 token 概率坍缩，直接丢分辨率</strong></td></tr>
+          <tr><td><strong>客观缺陷</strong><br><span class="dim">削波 / 杂音</span></td><td>CPU DSP 规则算子</td><td>有确定性物理信号，程序化比 VLM 更准且零 serving</td></tr>
+        </tbody>
+      </table>
+      <p class="dim" style="font-size:13px">顺带一句成本设计：<strong>按 (范式, 领域, rubric) 分组调用，成本是组数的函数不是 head 数的函数</strong>——一次长 CoT 同时产出 5 个指令遵循维度的分。</p>
+
+      <h3>② 软分：为什么 no-think 是被逼出来的</h3>
+      <pre>E[score] = Σ_k k · P(k)     <span class="c">合法数字上重归一</span></pre>
+      <p>两个视频 argmax 都是 3，完全无法区分；软分能区分 <code>3.438 &gt; 3.349</code>，这个概率质量偏向在 pair 比较里就是有效排序信号。<strong>而长 CoT 会把打分 token 概率压到 argmax≈1.0，软分退化成硬分。</strong>所以"感知维度用 no-think"不是随便选的，是软分机制的前提。</p>
+
+      <h3>③ 统计强项 ≠ 正向权重</h3>
+      <p>角色（quality / constraint / monitor）按<em>语义</em>冻结，权重按<em>可靠性</em>给：<code>w = max(0, ROC-AUC 的 case-cluster CI95 下界 − 0.5)</code>。三个能体现判断力的实例：</p>
+      <ul>
+        <li><code>reference_consistency</code> AUC <strong>0.662</strong>，判别力中上，但设成 <strong>constraint、正向权重 0</strong>。因为它语义上是<em>底线</em>不是<em>越高越好</em>——给正向权重的话模型会学会过度保守来刷分。</li>
+        <li><code>aesthetic_visual</code> 点估计 0.575 看着还行，但 <strong>CI95 下界没过 0.5，权重直接是 0</strong>。用下界不用点估计，意味着证据不足的维度自动出局。</li>
+        <li><code>edit_consistency</code> 有 <strong>1377 对</strong>样本（全场最多），AUC 仍只有 0.513。这不是估计不准，是真没信号——<strong>该去重写 rubric，不是去买标注</strong>。</li>
+      </ul>
+
+      <h3>④ Essential Gate：核心要求是门，不是加权项</h3>
+      <p>一个 core (P00) 要求未满足，该子维度<strong>硬封顶 1-2 分</strong>，多少次要点满足都买不回来；且子维度间独立，<code>content_following</code> 的 core miss 不能被优秀的 <code>visual_following</code> 补偿。</p>
+      <div class="box key">
+        <div class="lbl">一句话说清它的价值</div>
+        <p>"它避免了核心意图跑偏的样本，因为次要维度表现好而拿到中等偏上评价。<strong>对 RL 来说，一个方向错误的正奖励比没有奖励危害大得多。</strong>"</p>
+      </div>
+
+      <!-- ============ 聚合 ============ -->
+      <h2 id="agg">聚合公式</h2>
+      <pre>u       = sigmoid(α·(raw − center))      <span class="c">α 由无截距 pairwise logistic 对人工 GSB pair 拟合</span>
+quality = Σ(w_d·u_d) / Σ(w_d)            <span class="c">仅当前样本有效的 quality 头，动态重归一</span>
+penalty = −1.0 · Σ max(0, tau_d − u_d)   <span class="c">constraint 头，hinge</span>
+score   = clip(quality + penalty, 0, 1)</pre>
+
+      <table>
+        <thead><tr><th>family</th><th>质量项占比</th></tr></thead>
+        <tbody>
+          <tr><td><strong>R2V</strong></td><td class="mono">task_response <strong>65.4%</strong> · audio_expressiveness 14.6% · motion_quality 11.0% · motion_vividness 9.0%</td></tr>
+          <tr><td><strong>T2V</strong></td><td class="mono">video_prompt_following <strong>33.9%</strong> · audio_expressiveness <strong>33.5%</strong> · motion_vividness 20.4% · motion_quality 12.2%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="box warn">
+        <div class="lbl">已知不足，主动说比被问出来强</div>
+        <p>R2V 的 <code>audio_prompt_following</code> / <code>reference_consistency</code> 的 <code>tau=0.4</code> <strong>仍是经验阈值，没做过独立的 threshold/cost 标定</strong>。另外只有全局 <code>constraint_lambda=1.0</code>，无 per-head lambda 也无 penalty cap，最坏情况下约束可以完全抹掉质量项。</p>
+      </div>
+
+      <!-- ============ 决策一 ============ -->
+      <h2 id="ppo">★ 决策一：为什么 PPO 换成 GRPO</h2>
+
+      <p class="dim" style="font-size:13px">整个 RL 部分按两个决策讲：<strong>先定算法（本节）→ 再定多维 reward 怎么进 advantage（下一节）</strong>。顺序别倒，倒了听的人会不知道你在哪一层做取舍。</p>
+
+      <h3>PPO 在视频 reward 上的两个致命伤</h3>
+      <ol>
+        <li><strong>Critic 几乎训不好。</strong>value 网络要从当前 state 预测最终视频会被 RM 打多少分，但这个回归目标同时满足了所有最难的条件：<em>奖励是终局的</em>（视频全部生成完才有分，中间步骤没有可靠的信用分配信号）、<em>值域混乱</em>（多维分聚合后的标量分布本身随训练漂）、<em>目标非平稳</em>（RM 还在迭代版本，换版本就整体平移）、<em>样本极贵</em>（每个样本要真跑一遍视频生成加多次 VLM 打分，critic 想收敛需要的数据量根本喂不起）。Critic 拟合不好，advantage 就是噪声，PPO 的低方差优势直接不成立。</li>
+        <li><strong>显存爆炸。</strong>PPO 要同时持有 policy / ref / reward / critic 四份模型，critic 通常和 policy 同量级。视频生成这边本来就 DiT + VAE + text encoder 堆满了，再加一个同量级 critic 直接翻倍。</li>
+      </ol>
+
+      <h3>GRPO 怎么正好命中这个任务</h3>
+      <p>核心动作只有一个：<strong>同一个 prompt 采一组样本，用组内相对比较当基线，把 Critic 整个砍掉。</strong>四个任务特性逐一对上：</p>
+      <table>
+        <thead><tr><th>视频任务特性</th><th>GRPO 为什么不吃亏</th></tr></thead>
+        <tbody>
+          <tr><td><strong>序列级 / 终局奖励</strong></td><td>本来就是对整条轨迹给一个标量优势，不需要 per-token value——正好匹配"只有终局有分"</td></tr>
+          <tr><td><strong>延迟奖励</strong></td><td>没有中间信用分配的需求，组内比较直接给出"这个样本比同组平均好多少"</td></tr>
+          <tr><td><strong>值域混乱</strong></td><td>组内归一化把任意值域映射成相对排序，不需要谁去学绝对值域</td></tr>
+          <tr><td><strong>多维度 reward</strong></td><td>组内相对比较天然消掉各维度的绝对偏置<span class="dim">（这条直接通向决策二）</span></td></tr>
+        </tbody>
+      </table>
+
+      <div class="box key">
+        <div class="lbl">一个能加分的二阶效应</div>
+        <p>砍掉 critic 省下的显存不是白省的——<strong>它直接换成更大的 group size G，而 G 越大组内基线估计越准</strong>。省显存和降方差在这里是同一个动作的两面，形成正反馈。这点主动讲出来，比只说"省显存"高一档。</p>
+      </div>
+
+      <div class="box warn">
+        <div class="lbl">务必带上这个 caveat，否则像在跟风</div>
+        <p>"<strong>GRPO 不是无条件比 PPO 强。</strong>在奖励稠密可靠、值域稳定、采样便宜的任务上，训得好的 critic 能给出比组内均值更低方差的基线，GRPO 反而是更粗糙的估计，而且要付 G 倍的采样成本。<em>是视频生成这个任务把 PPO 的固有缺陷放大了——奖励终局、非平稳、多维、样本极贵、模型极大——而 GRPO 恰好这几条都不吃亏。</em>所以这是任务特性和算法特性对上了，不是算法本身更先进。"</p>
+      </div>
+
+      <!-- ============ 决策二 ============ -->
+      <h2 id="adv">★ 决策二：为什么 advantage 加权而非 reward 加权</h2>
+
+      <div class="box key">
+        <div class="lbl">结论先行</div>
+        <p>确定用 GRPO 之后，多维 reward 还剩一个聚合位置的选择：<em>先加权成标量再算组内 advantage</em>，还是<em>逐维各算组内 advantage 再加权</em>。线上是后者。一句话理由：<strong>raw 加权实际施加的权重是 <code>w_d·σ_d</code> 而不是你配置的 <code>w_d</code></strong>，而 σ_d 你控制不了。</p>
+      </div>
+
+      <div class="box warn">
+        <div class="lbl">文档待更新</div>
+        <p>脱敏文档 §1.4 / §3.2 现在还写着 <code>use_subdim_grpo=False</code> / scalar-GRPO，和线上实际不一致。<strong>面试前记得改掉</strong>，否则被问到时自己的材料和口径会打架。</p>
+      </div>
+
+      <h3>骨架：一个恒等式</h3>
+      <pre><span class="c">A：raw 加权成标量再算 advantage              B：逐维 advantage 再加权（线上）</span>
+s_i = Σ_d w_d·u_{i,d} / W                    A_{i,d} = (u_{i,d} − ū_d) / σ_d
+A_i = (s_i − s̄) / σ_s                        A_i     = Σ_d w_d·A_{i,d} / W
+
+<span class="c">把 A 展开，代入 u_{i,d} − ū_d = σ_d·A_{i,d}：</span>
+
+A_i = Σ_d <span class="hl">[ w_d·σ_d / (W·σ_s) ]</span> · A_{i,d}</pre>
+
+      <div class="box key">
+        <div class="lbl">题眼</div>
+        <p>两者都是线性组合，只差系数。<strong>raw 加权实际施加的权重是 <code>w_d·σ_d</code>，不是 <code>w_d</code></strong>。而 σ_d 是<em>组内</em>标准差，取决于当前策略和当前 prompt，<strong>根本不是你能配置的量</strong>。</p>
+      </div>
+
+      <h3>后果一：标定出来的权重直接失效</h3>
+      <p>用你自己的 R2V 权重量化一下。假设 PE 的指令遵循已经练得很好所以组内几乎不波动，而生动度波动大：</p>
+      <table>
+        <thead><tr><th>head</th><th>配置占比</th><th>σ_d <span class="dim">假设</span></th><th>w·σ</th><th>实际生效</th><th>偏移</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">task_response</td><td class="n">65.4%</td><td class="n">0.03</td><td class="n">0.0196</td><td class="n"><strong>30.0%</strong></td><td class="n down">−35.4pt</td></tr>
+          <tr><td class="mono">motion_vividness</td><td class="n">9.0%</td><td class="n">0.20</td><td class="n">0.0180</td><td class="n"><strong>27.5%</strong></td><td class="n up">+18.5pt</td></tr>
+          <tr><td class="mono">audio_expressiveness</td><td class="n">14.6%</td><td class="n">0.10</td><td class="n">0.0146</td><td class="n">22.3%</td><td class="n up">+7.7pt</td></tr>
+          <tr><td class="mono">motion_quality</td><td class="n">11.0%</td><td class="n">0.12</td><td class="n">0.0132</td><td class="n">20.2%</td><td class="n up">+9.2pt</td></tr>
+        </tbody>
+      </table>
+      <p><strong>设计上让 <code>task_response</code> 扛三分之二，实际梯度里只占 30%；只给 9% 的 <code>motion_vividness</code> 实际占 27.5%，放大三倍。</strong>你花在标定权重上的所有功夫，在这一步被 σ_d 悄悄改写了。</p>
+      <p class="dim" style="font-size:12.5px">σ_d 是为说明问题假设的，讲的时候要注明不是实测。</p>
+
+      <h3>后果二：训练中分布漂移，目标函数自己走偏</h3>
+      <p>上面还只是某一时刻的静态偏差。更麻烦的是<strong>各维度的分数分布在训练中根本不是静止的</strong>，而 raw 加权下 σ_d 的任何变化都会直接改写实际权重：</p>
+      <ul>
+        <li><strong>简单维度先饱和</strong>：指令遵循通常最先练到天花板，组内 σ 迅速趋近 0，于是它<em>自动退出梯度</em>。</li>
+        <li><strong>难维度长期保持方差</strong>：美感、运动质量收敛慢，σ 一直不小，于是它们<em>接管了梯度</em>。</li>
+        <li><strong>RM 自身在迭代版本</strong>：换一版 RM，各维度的值域和方差整体平移，实际权重跟着跳变。</li>
+      </ul>
+
+      <div class="box warn">
+        <div class="lbl">由此产生的典型失效模式</div>
+        <p>训练早期指令遵循贡献最大，中后期它饱和退出、梯度被感知维度接管，<strong>于是模型开始在指令遵循上缓慢退化——因为已经没有梯度在维持它了</strong>。表现出来就是"练着练着指令遵循掉了，但没人动过配置"。这类问题极难归因，因为配置文件从头到尾没变过。</p>
+      </div>
+
+      <p>逐维归一化下，只要某维度在组内<em>还有任何排序信息</em>，它就以配置权重参与更新，不会因为绝对差值变小而被淹没。<span class="dim">当然它真的完全无区分度时谁也救不了——那种情况任何方案都没有信号可用，也正是需要下面第一条对策兜底的原因。</span></p>
+
+      <h3>逐维不是免费的：三个代价，以及怎么接住</h3>
+      <p>光说"逐维更忠实于配置"是半个答案。<strong>能主动讲出代价和对策，才是把这题答满的地方</strong>——面试官几乎一定会往这里挖。</p>
+      <ol>
+        <li><strong>低方差维度的噪声被放大到满权重。</strong>如果一组样本美感确实一样好，<code>σ≈0</code>，逐维 z-score 等于<em>除以一个基本由噪声构成的数</em>，把纯噪声放大回配置权重，模型于是学会拟合噪声。<br>
+          <span class="dim">对策就是你们已有的那道门：<strong>权重按 ROC-AUC 的 CI95 下界给，不过下界就是 0 权重</strong>。这道门在标量方案下只是稳健性措施，<strong>在逐维方案下是前置必要条件</strong>——没有它不敢上 subdim。<code>aesthetic_visual</code>（点估计 0.575、下界没过 0.5、权重 0）就是这道门在真实生效的例子。工程上再加个方差地板 <code>max(σ_d, ε)</code> 兜底。</span></li>
+        <li><strong>非线性项没法分解。</strong><code>penalty = −λ·Σ max(0, tau_d − u_d)</code> 是 hinge，外面还有 clip，而 <code>Σ_d w_d A_d</code> 预设了聚合对各维度线性。更要命的是语义：<strong>对 constraint 头做组内 z-score，等于把"门"变成"排序信号"</strong>——永远要比同组更好，这正是把它们设成 constraint、正向权重给 0 想关掉的 hacking 面。<br>
+          <span class="dim">所以合理的形态是<strong>混合</strong>：quality 头走逐维 advantage，constraint penalty 仍施加在标量上，保住 gate 语义。<span class="down">这块确认一下你们线上具体怎么处理的，我只能从公式形态推断。</span></span></li>
+        <li><strong>逐维 N/A 会打碎组内统计。</strong>纯 T2V 时 <code>reference_consistency=na</code>，head 也可能 fail，于是每个维度的 mean/σ 要在<em>组内不同子集</em>上算、n 还各不相同。G=8 时某维度只在 2 个样本有效，用 n=2 估出来的 σ 去做除法很危险。<br>
+          <span class="dim">对策：有效样本数低于阈值时该维度直接退出本组的 advantage（等价于当次权重归零），而不是硬算一个 σ。</span></li>
+      </ol>
+
+      <div class="box key">
+        <div class="lbl">收口：一句话讲清取舍 + 该有的监控</div>
+        <p>"两种做法都是各维度中心化值的线性组合，只差系数。<em>raw 加权尊重'这个维度这次有没有区分度'，但你失去了对配置的控制权；逐维 advantage 忠实于配置，代价是要自己负责把没信号的维度挡在门外。</em>我们选逐维，是因为权重是用 ROC-AUC 置信下界推出来的——<strong>既然权重本身是个无量纲的可靠性量，就该施加在同样无量纲的 advantage 空间里</strong>，施加在 raw 空间会把量纲依赖又请回来。"</p>
+        <p>配套监控：<strong>每步记录 <code>w_d·σ_d / Σ_e w_e σ_e</code>，即"如果走 raw 加权会生效的权重"，和配置权重做对比</strong>。几乎零成本，能直接量化逐维方案到底纠正了多大的偏移，也是回答"这个改动有多大收益"的证据。</p>
+      </div>
+
+      <!-- ============ 追问 ============ -->
+      <h2 id="qa">深挖追问</h2>
+
+      <details>
+        <summary>那把 w_d 调大去补偿 σ_d 不就行了？</summary>
+        <div class="ans">
+          <p>不行，<strong>σ_d 非平稳而且是 per-prompt 的</strong>。训练中各维度饱和速度不同，你调的是移动靶；不同 prompt 的 σ_d 分布也不一样，没有任何一组常数能同时补偿所有 group。补偿 σ_d 本质上就是在做逐维归一化，只是用手动、滞后、且只在均值意义上正确的方式做。</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>GRPO 里除以 std 本身不是有偏吗？<span class="dim">（考察 Dr.GRPO）</span></summary>
+        <div class="ans">
+          <p>问得很准，这是我们方案<strong>最实在的一处代价</strong>，不要回避。</p>
+          <p>"是的，除以组内 std 会引入<strong>难度偏置</strong>——组内方差小的 prompt 梯度被放大，相当于加了个和难度相关的隐式权重。而且这个批评<strong>对逐维版本比对标量版本更尖锐</strong>，因为我们把这个有偏的除法做了 D 次。</p>
+          <p>关键是要把两件常被混谈的事分开：<strong>逐维中心化是无偏的方差缩减，除以组内 std 才是引入偏置的那一步。</strong>我们真正需要的是前者——去掉每个维度、每个 prompt 的基线；后者只是为了让权重可比。所以自然的收敛方向是<em>保留逐维中心化，但把分母从组内 σ_d 换成跨 batch 的 EMA 全局 σ_d</em>：既拿到权重忠实性，又不吃组内 std 的难度偏置和小样本噪声。"</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>逐维 advantage 会不会反而加剧 reward hacking？</summary>
+        <div class="ans">
+          <p>会，这是我们上逐维时<strong>最先要堵的口子</strong>，坦诚承认再讲对策。</p>
+          <p>"<strong>逐维归一化保证每个维度永远以满权重推动策略</strong>，包括判别力接近随机的那些。raw 加权下没信号的维度会自然沉默，逐维会强行把它的噪声放大到配置权重，模型于是学会拟合噪声。</p>
+          <p>所以这两个设计是<strong>配套的、不能拆开看</strong>——<em>AUC 的 CI 下界门控在标量方案下只是个稳健性措施，在逐维方案下它是前置必要条件。</em>正因为我们先有了'不过 CI 下界就是 0 权重'这道门，把没证据的维度整个挡在 advantage 之外，逐维归一化才是安全的。反过来说，如果哪天有人想放宽权重门槛，那必须先把逐维换回标量。"</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>group size G 怎么定？</summary>
+        <div class="ans">
+          <p>G 是<strong>基线估计质量和采样成本的直接权衡</strong>，而视频生成里每个样本都要真跑一遍生成加打分，所以这个权衡比文本 RL 尖锐得多。</p>
+          <p>两个约束一起看：G 太小组内均值噪声大、基线不可靠（而且逐维 σ̂ 更不可靠——G=8 时相对误差就有约 25%）；G 太大则每个 prompt 的边际收益递减，不如把算力铺到更多 prompt 上去覆盖分布。<strong>砍掉 critic 省下的显存正好换成更大的 G，这是选 GRPO 的一个附带收益。</strong></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>只有一笔人工标注预算，花在哪？</summary>
+        <div class="ans">
+          <p>花在<strong>判别力已证明"中等"、但样本量还撑不起 CI 下界</strong>的维度上，别均匀铺。<code>aesthetic_visual</code>（0.575 / n=353，下界没过 0.5）是最典型的"可能有信号但证据不足"，边际收益最高。反过来 <code>edit_consistency</code> 已经 1377 对还是 0.513，<strong>那是 rubric 设计问题不是数据量问题</strong>，再买标注也救不回来。</p>
+        </div>
+      </details>
+    </main>
+  </div>
+
+  <div class="toolbar">
+    <button id="dec" title="减小字号">A−</button>
+    <button id="inc" title="增大字号">A+</button>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+      var links = Array.prototype.slice.call(document.querySelectorAll('nav a'));
+      var map = {}, targets = [];
+      links.forEach(function (a) {
+        var el = document.getElementById(a.getAttribute('href').slice(1));
+        if (el) { map[el.id] = a; targets.push(el); }
+      });
+
+      function sync() {
+        var best = null, bestTop = -Infinity;
+        targets.forEach(function (el) {
+          var top = el.getBoundingClientRect().top - 80;
+          if (top <= 0 && top > bestTop) { bestTop = top; best = el; }
+        });
+        if (!best && targets.length) best = targets[0];
+        links.forEach(function (a) { a.classList.remove('on'); });
+        if (best && map[best.id]) map[best.id].classList.add('on');
+      }
+
+      var tick = false;
+      window.addEventListener('scroll', function () {
+        if (!tick) { tick = true; requestAnimationFrame(function () { sync(); tick = false; }); }
+      }, { passive: true });
+      sync();
+
+      var size = parseFloat(localStorage.getItem('ip-size') || '15');
+      function apply() {
+        document.body.style.fontSize = size + 'px';
+        try { localStorage.setItem('ip-size', String(size)); } catch (e) { }
+      }
+      document.getElementById('inc').onclick = function () { size = Math.min(size + 1, 22); apply(); };
+      document.getElementById('dec').onclick = function () { size = Math.max(size - 1, 12); apply(); };
+      apply();
+
+      var opened = [];
+      window.addEventListener('beforeprint', function () {
+        opened = [];
+        document.querySelectorAll('details').forEach(function (d) {
+          if (!d.open) { opened.push(d); d.open = true; }
+        });
+      });
+      window.addEventListener('afterprint', function () {
+        opened.forEach(function (d) { d.open = false; }); opened = [];
+      });
+    })();
+  </script>
+</body>
+
+</html>
